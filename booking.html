@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Details</title>
+    <style>
+        div#maincontent {
+            height: 250px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 600px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h4 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="heading">
+            <b>Theatre Drama</b>
+        </div>
+        <div id="maincontent">
+            <h4>Your Ticket Details:</h4>
+            <br>
+            <script>
+                // Prompt user for number of seats
+                let numSeats = Number(prompt("Please enter the number of seats to book:"));
+
+                // Error handling for invalid input
+                if (isNaN(numSeats)) {
+                    alert("Invalid input. Please enter a valid number of seats.");
+                } else if (numSeats > 6) {
+                    alert("Maximum 6 seats allowed per booking.");
+                } else {
+                    // Calculate total cost and display details based on conditions
+                    if (numSeats <= 2) {
+                        let totalCost = numSeats * 9;
+                        document.write(`<p>You have booked ${numSeats} ticket(s).</p>`);
+                        document.write(`<p>Total cost: $${totalCost}</p>`);
+                    } else {
+                        let discount = 0;
+                        let totalCost = 0;
+
+                        // Use appropriate loop based on user preference
+                        // Replace "for" with "while" or "do-while" to test other methods
+
+                        for (let customer = 1; customer <= numSeats; customer++) {
+                            switch (customer) {
+                                case 1:
+                                    discount = 5;
+                                    break;
+                                case 2:
+                                    discount = 7;
+                                    break;
+                                case 3:
+                                    discount = 9;
+                                    break;
+                                case 4:
+                                    discount = 11;
+                                    break;
+                                default:
+                                    discount = 11; // For more than 4 seats, apply 11% discount
+                            }
+
+                            let costPerTicket = 9 - (9 * discount) / 100;
+                            totalCost += costPerTicket;
+
+                            document.write(`<p>Customer ${customer}: Cost per ticket: $${costPerTicket.toFixed(2)}</p>`);
+                        }
+
+                        document.write(`<p>Total cost: $${totalCost.toFixed(2)}</p>`);
+                    }
+                }
+            </script>
+        </div>
+    </center>
+</body>
+</html>

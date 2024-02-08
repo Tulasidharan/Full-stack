@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Details</title>
+  <style>
+    div#maincontent {
+      height: 280px;
+      width: 600px;
+      border: 1px solid #CEE2FA;
+      text-align: left;
+      color: #08438E;
+      font-family: calibri;
+      font-size: 20px;
+      padding: 5px;
+    }
+    div#heading {
+      text-decoration: bold;
+      text-align: center;
+      margin-top: 80px;
+      width: 600px;
+      border: 1px solid #CEE2FA;
+      text-align: center;
+      color: #08438E;
+      background-color: #CEE2FA;
+      font-family: calibri;
+      font-size: 20px;
+      padding: 5px;
+    }
+    h4 {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <div id="heading">
+      <b>Theatre Drama</b>
+    </div>
+    <div id="maincontent">
+      <h4>Your Ticket Details:</h4>
+      <br>
+      <script>
+        // Prompt user for number of seats (with maximum check)
+        let numSeats = Number(prompt("Please enter the number of seats to book (Max: 4):"));
+
+        // Error handling for invalid input and exceeding maximum seats
+        if (isNaN(numSeats) || numSeats <= 0 || numSeats > 4) {
+          alert("Invalid input. Please enter a valid number of seats (1-4).");
+        } else {
+          // Calculate total cost and display details based on conditions
+          if (numSeats <= 2) {
+            let totalCost = numSeats * 9;
+            document.write(`<p>You have booked ${numSeats} ticket(s).</p>`);
+            document.write(`<p>Total cost: $${totalCost.toFixed(2)}</p>`);
+          } else {
+            let discounts = [5, 7, 9, 11]; // Predefined discounts for each customer
+            let totalCost = 0;
+
+            // Calculate per-customer cost with discount
+            for (let customer = 0; customer < numSeats; customer++) {
+              let costPerTicket = 9 - (9 * discounts[customer]) / 100;
+              totalCost += costPerTicket;
+
+              document.write(`<p>Customer ${customer + 1}: Cost per ticket: $${costPerTicket.toFixed(2)}</p>`);
+            }
+
+            document.write(`<p>Total cost: $${totalCost.toFixed(2)}</p>`);
+          }
+        }
+      </script>
+    </div>
+  </center>
+</body>
+</html>
